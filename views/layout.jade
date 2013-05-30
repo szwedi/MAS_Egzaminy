@@ -1,0 +1,18 @@
+doctype 5
+html
+	head
+		title Egzaminy
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		link(rel='stylesheet', href='./bootstrap/css/bootstrap.min.css')
+		link(rel='stylesheet', href='./bootstrap/css/bootstrap-responsive.min.css')
+		script(src='./javascripts/jquery-1.10.0.min.js')
+		script(src='./javascripts/skrypt.js')
+	body
+		.container-narrow
+			.masthead
+				ul.nav.nav-pills.pull-right
+					li.active
+						a(href='/loginPanel') Login
+				a(href='/')
+					h3.muted Egzaminy
+		block content
