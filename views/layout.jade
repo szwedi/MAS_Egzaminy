@@ -12,6 +12,8 @@ html
 			.masthead
 				ul.nav.nav-pills.pull-right
 					if(session.login == true)
+						li
+							p Hello #{session.userLogin}
 						li.active
 							a(href='/logout') Logout
 					else

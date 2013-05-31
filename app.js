@@ -8,7 +8,7 @@ var express = require('express')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
-  , db = require('./models/index');
+  , db = require('./models/settings');
 
 var app = express();
 
