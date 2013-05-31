@@ -11,8 +11,12 @@ html
 		.container-narrow
 			.masthead
 				ul.nav.nav-pills.pull-right
-					li.active
-						a(href='/loginPanel') Login
+					if(session.login == true)
+						li.active
+							a(href='/logout') Logout
+					else
+						li.active
+							a(href='/loginPanel') Login
 				a(href='/')
 					h3.muted Egzaminy
 		block content

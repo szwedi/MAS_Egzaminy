@@ -7,9 +7,13 @@ var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , passport = require('passport')
+  , LocalStrategy = require('passport-local').Strategy;
 
 var app = express();
+
+
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -19,6 +23,12 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
+app.use(express.cookieParser());
+app.use(express.session({secret: 'secret key'}));
+app.use(function(req, res, next){
+	res.locals.session = req.session;
+	next();
+});
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -30,6 +40,7 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/loginPanel', routes.loginPanel);
 app.post('/login', routes.login);
+app.get('/logout', routes.logout);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

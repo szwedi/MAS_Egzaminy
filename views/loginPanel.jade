@@ -2,9 +2,8 @@ extends layout
 
 block content
 	.container
-	form.form-signin
-		form(action='/login', method='post')
-			h3.form-signin-heading Please login
-			input.input-block-level(type='text', name="login", placeholder='Login')
-			input.input-block-level(type='password', name="password", placeholder='Password')
-			button.btn.btn-primary(type='submit') Login
+	form.form-signin(action='/login', method='post')
+		h3.form-signin-heading Please login
+		input.input-block-level(type='text', name='login', placeholder='Login')
+		input.input-block-level(type='password', name='password', placeholder='Password')
+		input.btn.btn-primary(type='submit', value='Login')
