@@ -6,9 +6,9 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "express": "*",
-    "jade": "*",
-    "passport":"*",
-    "passport-local":"*"
+    "express" : "*",
+    "jade" : "*",
+    "mysql" : "*",
+    "sequelize" : "*"
   }
 }

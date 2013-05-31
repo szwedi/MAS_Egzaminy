@@ -8,8 +8,7 @@ var express = require('express')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
-  , passport = require('passport')
-  , LocalStrategy = require('passport-local').Strategy;
+  , db = require('./models/index');
 
 var app = express();
 
