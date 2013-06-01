@@ -8,7 +8,7 @@ var express = require('express')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
-  , db = require('./models/settings');
+  , db = require('./models_mysql/settings');
 
 var app = express();
 
@@ -40,6 +40,8 @@ app.get('/', routes.index);
 app.get('/loginPanel', routes.loginPanel);
 app.post('/login', routes.login);
 app.get('/logout', routes.logout);
+
+app.get('/wykladowca/classPanel', routes.wykladowca_class);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

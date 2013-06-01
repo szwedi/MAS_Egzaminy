@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+	.site
+		table(border='0')
+			- for (var i = 0; i < student.length; i++)
+				tr
+					td #{student[i].imie}
+					td #{student[i].nazwisko}
+					td #{student[i].login}
+					td 
+						input(type='checkbox', name='#{student[i].login}')

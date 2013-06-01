@@ -1,4 +1,4 @@
-var db = require('../models/settings');
+var db = require('../models_mysql/settings');
 
 exports.index = function(req, res){
 	res.render('index');
@@ -28,6 +28,13 @@ exports.login = function(req, res){
 				}
 			});
 		}
+	});
+};
+
+exports.wykladowca_class = function(req, res){
+	db.Student.findAll().success(function(data){
+		console.log('dupa');
+		res.render('wykladowca/classPanel', {student : data});
 	});
 };
 

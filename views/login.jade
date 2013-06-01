@@ -2,14 +2,4 @@ extends layout
 
 block content
 	.site
-		if (session.typ == 'student')
-			.navbar
-				.navbar-inner
-					.container
-						ul.nav
-							li
-								a(href='#') Actual exams
-							li
-								a(href='#') Archival exams
-		else
-			h3 Zalogowany
+		p Zalogowany

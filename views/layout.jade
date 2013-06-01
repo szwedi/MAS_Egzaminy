@@ -21,4 +21,26 @@ html
 							a(href='/loginPanel') Login
 				a(href='/')
 					h3.muted Egzaminy
+		if(session.login == true)
+			.navbar
+				.navbar-inner
+					.container
+						if(session.typ == 'student')
+							ul.nav
+								li
+									a(href='#') Actual exams
+								li
+									a(href='#') Archival exams
+						if(session.typ == 'wykladowca')
+							ul.nav
+								li
+									a(href='#') Manage questions
+								li
+									a(href='/wykladowca/classPanel') Manage classes
+								li
+									a(href='#') Compose test
+								li
+									a(href='#') Activate test
+								li
+									a(href='#') Generate report
 		block content

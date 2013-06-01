@@ -4,8 +4,7 @@
 	  }
 	  .site {
 	  	margin: 0 auto;
-		max-width: 800px;
-
+		  max-width: 800px;
 	  }
 
 	  /* Custom container */
@@ -18,7 +17,7 @@
 	  }
 
 
-
+     /* Formularz logowania */
 	  .form-signin {
         max-width: 300px;
         padding: 19px 29px 29px;
@@ -49,6 +48,8 @@
       /* Customize the navbar links to be fill the entire space of the .navbar */
       .navbar .navbar-inner {
         padding: 0;
+        margin: 0 auto;
+        max-width: 800px;
       }
       .navbar .nav {
         margin: 0;
@@ -57,7 +58,7 @@
       }
       .navbar .nav li {
         display: table-cell;
-        width: 50%;
+        width: auto;
         float: none;
       }
       .navbar .nav li a {
