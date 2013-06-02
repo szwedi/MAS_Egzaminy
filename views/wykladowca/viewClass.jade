@@ -6,3 +6,9 @@ block content
 			a(href='/viewClass/#{name}/addStudent')
 				input.btn.btn-primary(type='button', value='Add student')
 			h3 #{name}
+			table.table
+				- for (var i = 0; i < data.length; i++)
+					tr
+						td #{data[i].name}
+						td #{data[i].surname}
+						td #{data[i].login}

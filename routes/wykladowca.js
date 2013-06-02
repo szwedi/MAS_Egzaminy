@@ -26,7 +26,10 @@ exports.createClass = function(req, res){
 
 exports.viewClass = function(req, res) {
 	var nameUrl = req.params.name;
-	res.render('wykladowca/viewClass', {name : nameUrl});
+	Class.find({name: nameUrl},function(err, result){
+		console.log(result);				//trzeba jakoś wycignć dane o studentach i zamieścić na stronie 
+		//res.render('wykladowca/viewClass', {name : nameUrl, data : result});
+	});
 };
 
 exports.addStudent = function(req, res) {
@@ -38,10 +41,16 @@ exports.addStudent = function(req, res) {
 
 exports.addStudentPost = function(req, res) {
 	var nameUrl = req.params.name;
-	console.log('0: ' + req.body.checkbox0);
-	console.log('1: ' + req.body.checkbox1);
-	console.log('2: ' + req.body.checkbox2);
-	console.log('3: ' + req.body.checkbox3);
-	//tu jakaś petla for która sprawdza czy zostaly zaznaczone checkboxy i jezeli zaznaczone to przerzucamy studentow do klasy
+	for (var data in req.body) {
+		db.Student.find({where: {login : data}}).success(function(student){
+			var newStudent = {
+				name: student.imie,
+				surname: student.nazwisko,
+				login: student.login
+			}
+			var newStudentInSchema = new Student(newStudent);
+			Class.update({name : nameUrl}, {$push: {student: newStudentInSchema}}, function(err, data){});
+		});
+	};
 	res.redirect('/viewClass/' + nameUrl);
 };

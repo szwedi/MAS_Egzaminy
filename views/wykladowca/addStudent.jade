@@ -12,5 +12,5 @@ block content
 							td #{data[i].nazwisko}
 							td #{data[i].login}
 							td 
-								input(type='checkbox', name='checkbox#{i}', value='#{data[i].login}')
+								input(type='checkbox', name='#{data[i].login}', value='#{data[i].login}')
 				input.btn.btn-primary(type='submit', value='Save')
