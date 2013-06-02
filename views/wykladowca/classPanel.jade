@@ -5,9 +5,10 @@ block content
 		center
 			a(href='/createClass')
 				input.btn.btn-primary(type='button', value='Create class')
-		table(border='1')
-			- for (var i = 0; i < data.length; i++)
-				tr
-					td #{data[i].name}
-					//- td 
-					//- 	input(type='checkbox', name='#{student[i].login}')
+			table.table
+				- for (var i = 0; i < data.length; i++)
+					tr
+						td 
+							center
+								a(href='/viewClass/#{data[i].name}')
+									p #{data[i].name}

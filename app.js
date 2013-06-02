@@ -45,6 +45,9 @@ app.get('/logout', routes.logout);
 app.get('/classPanel', wykladowca.classPanel);
 app.post('/classPanel', wykladowca.classPanelPost);
 app.get('/createClass', wykladowca.createClass);
+app.get('/viewClass/:name', wykladowca.viewClass);
+app.get('/viewClass/:name/addStudent', wykladowca.addStudent);
+app.post('/viewClass/:name/addStudent', wykladowca.addStudentPost);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

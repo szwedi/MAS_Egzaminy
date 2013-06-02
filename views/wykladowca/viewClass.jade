@@ -1,0 +1,8 @@
+extends ../layout
+
+block content
+	.site
+		center
+			a(href='/viewClass/#{name}/addStudent')
+				input.btn.btn-primary(type='button', value='Add student')
+			h3 #{name}

@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+	.site
+		center
+			h3 #{name}
+			form(action='/viewClass/#{name}/addStudent', method='post')
+				table.table
+					- for (var i = 0; i < data.length; i++)
+						tr
+							td #{data[i].imie}
+							td #{data[i].nazwisko}
+							td #{data[i].login}
+							td 
+								input(type='checkbox', name='checkbox#{i}', value='#{data[i].login}')
+				input.btn.btn-primary(type='submit', value='Save')
