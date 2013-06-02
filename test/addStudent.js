@@ -5,16 +5,21 @@ var Student = require('../models_mongoose/classModel').Student;
 
 mongoose.connect('mongodb://pjwstk:pjwstk311@linus.mongohq.com:10037/eX4AJDngsak3Mk6bLAEsg');
 
-var mystudent = {
-	name: 'Adam',
-	surname: 'Szwedowski',
-	login: 's0001'
-}
+// var mystudent = {
+// 	name: 'Adam',
+// 	surname: 'Szwedowski',
+// 	login: 's0001'
+// }
 
-		var cos = new Student(mystudent);
-
-
-Class.update({}, {$set: { student: cos}}, {upsert: true});
+// 		var cos = new Student(mystudent);
 
 
-mongoose.disconnect();
+// Class.update({}, {$set: { student: cos}}, {upsert: true});
+// 
+
+Class.find({}, function  (err, result) {
+	console.log(result.size);
+	mongoose.disconnect();
+});
+
+

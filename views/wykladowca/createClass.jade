@@ -1,0 +1,8 @@
+extends ../layout
+
+block content
+	.site
+		form(action='/classPanel', method='post')
+			h3.form-signin-heading Create class
+			input.input-block-level(type='text', name='name', placeholder='Name')
+			input.btn.btn-primary(type='submit', value='Create')

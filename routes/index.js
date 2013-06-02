@@ -30,14 +30,6 @@ exports.login = function(req, res){
 		}
 	});
 };
-
-exports.wykladowca_class = function(req, res){
-	db.Student.findAll().success(function(data){
-		console.log('dupa');
-		res.render('wykladowca/classPanel', {student : data});
-	});
-};
-
 exports.logout = function(req, res){
 	req.session.login = false;
 	res.redirect('/');
