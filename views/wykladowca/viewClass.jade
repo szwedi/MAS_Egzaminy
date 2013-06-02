@@ -7,8 +7,9 @@ block content
 				input.btn.btn-primary(type='button', value='Add student')
 			h3 #{name}
 			table.table
-				- for (var i = 0; i < data.length; i++)
+				- for (var i = 0; i < data[0].student.length; i++)
 					tr
-						td #{data[i].name}
-						td #{data[i].surname}
-						td #{data[i].login}
+						td #{data[0].student[i].login}
+						td #{data[0].student[i].name}
+						td #{data[0].student[i].surname}
+						

@@ -27,8 +27,7 @@ exports.createClass = function(req, res){
 exports.viewClass = function(req, res) {
 	var nameUrl = req.params.name;
 	Class.find({name: nameUrl},function(err, result){
-		console.log(result);				//trzeba jakoś wycignć dane o studentach i zamieścić na stronie 
-		//res.render('wykladowca/viewClass', {name : nameUrl, data : result});
+		res.render('wykladowca/viewClass', {name : nameUrl, data : result});
 	});
 };
 
