@@ -1,10 +1,11 @@
-extends ../layout
+extends ../../layout
 
 block content
 	.site
 		center
 			a(href='/createClass')
 				input.btn.btn-primary(type='button', value='Create class')
+			h3 All class
 			table.table
 				- for (var i = 0; i < data.length; i++)
 					tr
@@ -12,3 +13,7 @@ block content
 							center
 								a(href='/viewClass/#{data[i].name}')
 									p #{data[i].name}
+						td 
+							center
+								a(href='/removeClass/#{data[i]._id}')
+									input.btn(type='button', value='Delete class')

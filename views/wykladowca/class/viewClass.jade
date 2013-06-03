@@ -1,11 +1,12 @@
-extends ../layout
+extends ../../layout
 
 block content
 	.site
 		center
 			a(href='/viewClass/#{name}/addStudent')
 				input.btn.btn-primary(type='button', value='Add student')
-			h3 #{name}
+			h2 Class #{name}
+			h3 All student
 			table.table
 				- for (var i = 0; i < data[0].student.length; i++)
 					tr

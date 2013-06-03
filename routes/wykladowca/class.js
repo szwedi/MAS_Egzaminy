@@ -1,12 +1,12 @@
-var db = require('../models_mysql/settings');
+var db = require('../../models_mysql/settings');
 var mongoose = require('mongoose');
-var Class = require('../models_mongoose/classModel').Class;
-var Student = require('../models_mongoose/classModel').Student;
-var Group = require('../models_mongoose/classModel').Group;
+var Class = require('../../models_mongoose/classModel').Class;
+var Student = require('../../models_mongoose/classModel').Student;
+var Group = require('../../models_mongoose/classModel').Group;
 
 exports.classPanel = function(req, res){
 	Class.find({},function(err, result){
-		res.render('wykladowca/classPanel', {data : result});
+		res.render('wykladowca/class/classPanel', {data : result});
 	});
 };
 
@@ -21,20 +21,20 @@ exports.classPanelPost = function(req, res){
 };
 
 exports.createClass = function(req, res){
-	res.render('wykladowca/createClass');
+	res.render('wykladowca/class/createClass');
 };
 
 exports.viewClass = function(req, res) {
 	var nameUrl = req.params.name;
 	Class.find({name: nameUrl},function(err, result){
-		res.render('wykladowca/viewClass', {name : nameUrl, data : result});
+		res.render('wykladowca/class/viewClass', {name : nameUrl, data : result});
 	});
 };
 
 exports.addStudent = function(req, res) {
 	var nameUrl = req.params.name;
 	db.Student.findAll().success(function(student){
-		res.render('wykladowca/addStudent', {data : student, name : nameUrl});
+		res.render('wykladowca/class/addStudent', {data : student, name : nameUrl});
 	});
 };
 
@@ -52,4 +52,10 @@ exports.addStudentPost = function(req, res) {
 		});
 	};
 	res.redirect('/viewClass/' + nameUrl);
+};
+
+exports.removeClass = function(req, res) {
+	var idUrl = req.params.id;
+	Class.remove({_id: idUrl}, function(err) {});
+	res.redirect('/classPanel');
 };

@@ -5,7 +5,7 @@
 
 var express = require('express'),
   routes = require('./routes'),
-  wykladowca = require('./routes/wykladowca'),
+  wykladowcaClass = require('./routes/wykladowca/class'),
   http = require('http'),
   path = require('path'),
   db = require('./models_mysql/settings'),
@@ -42,12 +42,15 @@ app.get('/loginPanel', routes.loginPanel);
 app.post('/login', routes.login);
 app.get('/logout', routes.logout);
 
-app.get('/classPanel', wykladowca.classPanel);
-app.post('/classPanel', wykladowca.classPanelPost);
-app.get('/createClass', wykladowca.createClass);
-app.get('/viewClass/:name', wykladowca.viewClass);
-app.get('/viewClass/:name/addStudent', wykladowca.addStudent);
-app.post('/viewClass/:name/addStudent', wykladowca.addStudentPost);
+
+//----------CLASS-----------------
+app.get('/classPanel', wykladowcaClass.classPanel);
+app.post('/classPanel', wykladowcaClass.classPanelPost);
+app.get('/createClass', wykladowcaClass.createClass);
+app.get('/viewClass/:name', wykladowcaClass.viewClass);
+app.get('/viewClass/:name/addStudent', wykladowcaClass.addStudent);
+app.post('/viewClass/:name/addStudent', wykladowcaClass.addStudentPost);
+app.get('/removeClass/:id', wykladowcaClass.removeClass);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
