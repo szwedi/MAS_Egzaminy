@@ -13,4 +13,7 @@ block content
 						td #{data[0].student[i].login}
 						td #{data[0].student[i].name}
 						td #{data[0].student[i].surname}
+						td
+							a(href='/removeStudent/#{name}/#{data[0].student[i]._id}')
+								input.btn(type='button', value='Delete student')
 						

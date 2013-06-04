@@ -51,6 +51,7 @@ app.get('/viewClass/:name', wykladowcaClass.viewClass);
 app.get('/viewClass/:name/addStudent', wykladowcaClass.addStudent);
 app.post('/viewClass/:name/addStudent', wykladowcaClass.addStudentPost);
 app.get('/removeClass/:id', wykladowcaClass.removeClass);
+app.get('/removeStudent/:className/:id',wykladowcaClass.removeStudent);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

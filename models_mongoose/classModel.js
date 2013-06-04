@@ -1,16 +1,5 @@
 var mongoose = require('mongoose');
 
-var classSchema = new mongoose.Schema({
-	login_wyk: {
-		type: String
-	},
-	name: {
-		type: String
-	},
-	student: [studentSchema],
-	group: [groupSchema]
-
-});
 
 var studentSchema = new mongoose.Schema({
 	name: {
@@ -30,6 +19,19 @@ var groupSchema = new mongoose.Schema({
 	},
 	student: [studentSchema]
 });
+
+var classSchema = new mongoose.Schema({
+	login_wyk: {
+		type: String
+	},
+	name: {
+		type: String
+	},
+	student: [studentSchema],
+	group: [groupSchema]
+
+});
+
 
 exports.Student = mongoose.model('Student', studentSchema, 'student');
 exports.Group = mongoose.model('Group', groupSchema, 'group');

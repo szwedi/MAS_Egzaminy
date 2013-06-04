@@ -35,14 +35,14 @@ mongoose.connect('mongodb://pjwstk:pjwstk311@linus.mongohq.com:10037/eX4AJDngsak
 // 	console.log(data);
 // });
 
-Class.remove({
-	_id: '51ab0425e2a7ce2009000002'
-}, function(err) {
-	if (!err) {
-		console.log('usunieto');
-	} else {
-		console.log('error');
-	}
+// Class.remove({
+// 	_id: '51ab0425e2a7ce2009000002'
+// }, function(err) {
+// 	if (!err) {
+// 		console.log('usunieto');
+// 	} else {
+// 		console.log('error');
+// 	}
 
 
 //  Class.find({_id : '51ab09b69b1e26ec10000002'}, function(error, cos) {
@@ -58,7 +58,8 @@ Class.remove({
 // 
 // 
 
-
-
+Class.update({_id : '51ad82037350a91013000002'},{$pull : {student : {_id : '51ad821c7350a91013000005'}}}, function(err){
+	console.log(err);
+});
 
 //mongoose.disconnect();
