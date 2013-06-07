@@ -64,7 +64,8 @@ exports.removeStudent = function(req, res) {
 	var classNameUrl = req.params.className;
 	var idUrl = req.params.id;
 	Class.update({name : classNameUrl},{$pull : {student : {_id : idUrl}}}, function(err){
-		console.log(err);
+		if (err)
+			console.log(err);
 	});
 	res.redirect('/viewClass/' + classNameUrl);
 };

@@ -61,6 +61,8 @@ app.get('/createCategory', wykladowcaQuestion.createCategory);
 app.get('/viewCategory/:name',wykladowcaQuestion.viewCategory);
 app.get('/viewCategory/:name/addQuestion', wykladowcaQuestion.addQuestion);
 app.post('/viewCategory/:name/addQuestion', wykladowcaQuestion.addQuestionPost);
+app.get('/removeCategory/:id', wykladowcaQuestion.removeCategory);
+app.get('/removeQuestion/:categoryName/:id', wykladowcaQuestion.removeQuestion);
 
 
 http.createServer(app).listen(app.get('port'), function(){
