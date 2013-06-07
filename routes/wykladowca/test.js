@@ -3,6 +3,18 @@ var Test = require('../../models_mongoose/testModel').Test;
 var QuestionTest = require('../../models_mongoose/testModel').QuestionTest;
 var Category = require('../../models_mongoose/questionModel').Category;
 
+function getRandomInt (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function contains(array, obj) {
+    for (var i = 0; i < array.length; i++) {
+        if (array[i] === obj) {
+            return true;
+        }
+    }
+    return false;
+}
 
 exports.testPanel = function(req, res){
 	Test.find({login_wyk : req.session.userLogin},function(err, result){
@@ -30,8 +42,14 @@ exports.addQuestionNumberAutomatPost = function(req, res) {
 
 exports.addQuestionViewAutomatPost = function(req, res) {
 	Category.find({login_wyk : req.session.userLogin, name: req.body.category},function(err, result) {
-		for(var i=0; i<req.body.number; i++) {
-			console.log('pytanie' + i);   //uzupec cos tu -----------------------------------------------------
+		var questionTab = [];
+		for(; questionTab.length<req.body.number;) {
+			var numb = getRandomInt(0, result[0].question.length);
+			if(!contains(questionTab,numb))
+				questionTab.push(numb);
+		}
+		for(var i=0; i<questionTab.length; i++){
+			Test.update({name : req.body.name}, {$push: {question: result[0].question[questionTab[i]]}}, function(err, data){});
 		}
 	});
 	res.render('wykladowca/test/createTestAutomatView');

@@ -4,12 +4,12 @@ block content
 	.site
 		form(action='/createTestAutomat/addQuestionView', method='post')
 			h3.form-signin-heading Create test
-			input.input-block-level(type='text',disabled='disabled', name='name', value='#{name}')
+			input.input-block-level(type='text',readonly='readonly', name='name', value='#{name}')
 			p Category
-				select(name='category',disabled='disabled')
+				select(name='category',readonly='readonly')
 					option(value='#{category}') #{category}
 			p Nymber of question
 				select(name='number')
-					- for (var i = 1; i < data[0].question.length; i++)
+					- for (var i = 1; i <= data[0].question.length; i++)
 						option(value='#{i}') #{i}
 			input.btn.btn-primary(type='submit', value='Next')
