@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 
 var Class = require('../models_mongoose/classModel').Class;
 var Student = require('../models_mongoose/classModel').Student;
+var Group = require('../models_mongoose/classModel').Group;
 
 mongoose.connect('mongodb://pjwstk:pjwstk311@linus.mongohq.com:10037/eX4AJDngsak3Mk6bLAEsg');
 
@@ -58,8 +59,9 @@ mongoose.connect('mongodb://pjwstk:pjwstk311@linus.mongohq.com:10037/eX4AJDngsak
 // 
 // 
 
-Class.update({_id : '51ad82037350a91013000002'},{$pull : {student : {_id : '51ad821c7350a91013000005'}}}, function(err){
-	console.log(err);
-});
+
+// Class.update({_id : '51ad82037350a91013000002'},{$pull : {student : {_id : '51ad821c7350a91013000005'}}}, function(err){
+// 	console.log(err);
+// });
 
 //mongoose.disconnect();

@@ -1,0 +1,9 @@
+extends ../../layout
+
+block content
+	.site
+		center
+			a(href='/viewCategory/#{name}/addQuestion')
+				input.btn.btn-primary(type='button', value='Add question')
+			h2 Category #{name}
+			h3 All question

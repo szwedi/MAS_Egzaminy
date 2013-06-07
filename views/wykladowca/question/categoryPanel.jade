@@ -1,0 +1,19 @@
+extends ../../layout
+
+block content
+	.site
+		center
+			a(href='/createCategory')
+				input.btn.btn-primary(type='button', value='Create category')
+			h3 All category
+			table.table
+				- for (var i = 0; i < data.length; i++)
+					tr
+						td 
+							center
+								a(href='/viewCategory/#{data[i].name}')
+									p #{data[i].name}
+						td 
+							center
+								a(href='/removeCategory/#{data[i]._id}')
+									input.btn(type='button', value='Delete category')

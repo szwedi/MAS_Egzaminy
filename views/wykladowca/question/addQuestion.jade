@@ -1,0 +1,21 @@
+extends ../../layout
+
+block content
+	.site
+		form(action='/viewCategory/#{name}/addQuestion', method='post')
+			h3 Add question
+			input.input-xxlarge(type='text', name='question', placeholder='Question')
+			br
+			input(type='checkbox', name='a', value='a')
+			input.input-xlarge(type='text', name='answerA', placeholder='Answer A')
+			br
+			input(type='checkbox', name='b', value='b')
+			input.input-xlarge(type='text', name='answerB', placeholder='Answer B')
+			br
+			input(type='checkbox', name='c', value='c')
+			input.input-xlarge(type='text', name='answerC', placeholder='Answer C')
+			br
+			input(type='checkbox', name='d', value='d')
+			input.input-xlarge(type='text', name='answerD', placeholder='Answer D')
+			br
+			input.btn.btn-primary(type='submit', value='Add')
