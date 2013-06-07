@@ -7,6 +7,7 @@ var express = require('express'),
   routes = require('./routes'),
   wykladowcaClass = require('./routes/wykladowca/class'),
   wykladowcaQuestion = require('./routes/wykladowca/question'),
+  wykladowcaTest = require('./routes/wykladowca/test'),
   http = require('http'),
   path = require('path'),
   db = require('./models_mysql/settings'),
@@ -63,6 +64,14 @@ app.get('/viewCategory/:name/addQuestion', wykladowcaQuestion.addQuestion);
 app.post('/viewCategory/:name/addQuestion', wykladowcaQuestion.addQuestionPost);
 app.get('/removeCategory/:id', wykladowcaQuestion.removeCategory);
 app.get('/removeQuestion/:categoryName/:id', wykladowcaQuestion.removeQuestion);
+
+//------------TEST----------------------
+app.get('/testPanel', wykladowcaTest.testPanel);
+app.get('/createTestAutomat',wykladowcaTest.createTestAutomat);
+app.post('/createTestAutomat/addQuestionNumber',wykladowcaTest.addQuestionNumberAutomatPost);
+app.post('/createTestAutomat/addQuestionView',wykladowcaTest.addQuestionViewAutomatPost);
+
+app.get('/removeTest/:id',wykladowcaTest.removeTest);
 
 
 http.createServer(app).listen(app.get('port'), function(){

@@ -1,0 +1,12 @@
+extends ../../layout
+
+block content
+	.site
+		form(action='/createTestAutomat/addQuestionNumber', method='post')
+			h3.form-signin-heading Create test
+			input.input-block-level(type='text', name='name', placeholder='Name')
+			p Category
+				select(name='category')
+					- for (var i = 0; i < data.length; i++)
+						option(value='#{data[i].name}') #{data[i].name}
+			input.btn.btn-primary(type='submit', value='Next')

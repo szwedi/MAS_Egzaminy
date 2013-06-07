@@ -1,0 +1,21 @@
+extends ../../layout
+
+block content
+	.site
+		center
+			a(href='/createTestAutomat')
+				input.btn.btn-primary(type='button', value='Create test - automat')
+			a(href='/createTestManual')
+				input.btn.btn-primary(type='button', value='Create test - manual')
+			h3 All test
+			table.table
+				- for (var i = 0; i < data.length; i++)
+					tr
+						td 
+							center
+								a(href='/viewTest/#{data[i].name}')
+									p #{data[i].name}
+						td 
+							center
+								a(href='/removeTest/#{data[i]._id}')
+									input.btn(type='button', value='Delete test')
