@@ -70,7 +70,10 @@ app.get('/testPanel', wykladowcaTest.testPanel);
 app.get('/createTestAutomat',wykladowcaTest.createTestAutomat);
 app.post('/createTestAutomat/addQuestionNumber',wykladowcaTest.addQuestionNumberAutomatPost);
 app.post('/createTestAutomat/addQuestionView',wykladowcaTest.addQuestionViewAutomatPost);
-
+app.get('/createTestManual',wykladowcaTest.createTestManual);
+app.post('/createTestManual/addQuestionView',wykladowcaTest.addQuestionViewManualPost);
+app.post('/createTestManual/addQuestionSave',wykladowcaTest.addQuestionSaveManualPost);
+app.get('/viewTest/:name',wykladowcaTest.viewTest);
 app.get('/removeTest/:id',wykladowcaTest.removeTest);
 
 

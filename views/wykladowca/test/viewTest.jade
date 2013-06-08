@@ -1,0 +1,12 @@
+extends ../../layout
+
+block content
+	.site
+		center
+			h2 Test #{name}
+			h3 Question
+			table.table
+				- for (var i = 0; i < data[0].question.length; i++)
+					tr
+						td #{data[0].question[i].question}
+						

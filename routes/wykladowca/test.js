@@ -55,6 +55,34 @@ exports.addQuestionViewAutomatPost = function(req, res) {
 	res.render('wykladowca/test/createTestAutomatView');
 };
 
+exports.createTestManual = function(req, res){
+	Category.find({login_wyk : req.session.userLogin},function(err, result){
+		res.render('wykladowca/test/createTestManual', {data : result});
+	});
+};
+
+exports.addQuestionViewManualPost = function(req, res) {
+	Category.find({login_wyk : req.session.userLogin, name: req.body.category},function(err, result) {
+		res.render('wykladowca/test/createTestManualView', {data : result, name : req.body.name, category : req.body.category});
+	});
+};
+
+exports.addQuestionSaveManualPost = function(req, res) {
+	for (var data in req.body) {
+		Category.find({login_wyk : req.session.userLogin, name: req.body.category, question : {_id : data}},function(err, result) {
+			console.log(result); 
+			/// uzupelnic ///
+		});
+	};
+};
+
+exports.viewTest = function(req, res) {
+	var nameUrl = req.params.name;
+	Test.find({name: nameUrl},function(err, result){
+		res.render('wykladowca/test/viewTest', {name : nameUrl, data : result});
+	});
+};
+
 exports.removeTest = function(req, res) {
 	var idUrl = req.params.id;
 	Test.remove({_id: idUrl}, function(err) {});

@@ -1,0 +1,16 @@
+extends ../../layout
+
+block content
+	.site
+		center
+			h3 Test #{name}
+			form(action='/createTestManual/addQuestionSave', method='post')
+				input.input-block-level(type='hidden', name='test', vaule='#{name}')
+				input.input-block-level(type='hidden', name='category', vaule='#{category}')
+				table.table
+					- for (var i = 0; i < data[0].question.length; i++)
+						tr
+							td #{data[0].question[i].question}
+							td 
+								input(type='checkbox', name='#{data[0].question[i]._id}', value='#{data[0].question[i]._id}')
+				input.btn.btn-primary(type='submit', value='Save')

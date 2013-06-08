@@ -65,3 +65,7 @@ mongoose.connect('mongodb://pjwstk:pjwstk311@linus.mongohq.com:10037/eX4AJDngsak
 // });
 
 //mongoose.disconnect();
+
+	// Class.find({name: 'nowa klasa'},{poulate: 'student'},function(err, result){
+	// 	console.log(result);
+	// });
