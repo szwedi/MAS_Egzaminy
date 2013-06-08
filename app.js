@@ -8,6 +8,7 @@ var express = require('express'),
   wykladowcaClass = require('./routes/wykladowca/class'),
   wykladowcaQuestion = require('./routes/wykladowca/question'),
   wykladowcaTest = require('./routes/wykladowca/test'),
+  wykladowcaActive = require('./routes/wykladowca/active'),
   http = require('http'),
   path = require('path'),
   db = require('./models_mysql/settings'),
@@ -75,6 +76,10 @@ app.post('/createTestManual/addQuestionView',wykladowcaTest.addQuestionViewManua
 app.post('/createTestManual/addQuestionSave',wykladowcaTest.addQuestionSaveManualPost);
 app.get('/viewTest/:name',wykladowcaTest.viewTest);
 app.get('/removeTest/:id',wykladowcaTest.removeTest);
+
+//---------------ACTIVE------------------
+app.get('/activePanel', wykladowcaActive.activePanel);
+app.get('/activeTest/:id',wykladowcaActive.activeTest);
 
 
 http.createServer(app).listen(app.get('port'), function(){

@@ -1,0 +1,16 @@
+extends ../../layout
+
+block content
+	.site
+		center
+			h3 All tests
+			table.table
+				- for (var i = 0; i < data.length; i++)
+					tr
+						td 
+							center
+								p #{data[i].name}
+						td 
+							center
+								a(href='/activeTest/#{data[i]._id}')
+									input.btn(type='button', value='Active test')

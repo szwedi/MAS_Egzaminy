@@ -40,8 +40,8 @@ var testSchema = new mongoose.Schema({
 	stop: {
 		type: Date
 	},
-	active: {
-		type: Boolean
+	status: {
+		type: String
 	},
 	view: {
 		type: String
