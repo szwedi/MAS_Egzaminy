@@ -65,13 +65,17 @@ exports.createTestManual = function(req, res){
 exports.addQuestionViewManualPost = function(req, res) {
 	Category.find({login_wyk : req.session.userLogin, name: req.body.category},function(err, result) {
 		res.render('wykladowca/test/createTestManualView', {data : result, name : req.body.name, category : req.body.category});
+		//nie przekazuje category do widoku nie wiem czemu
 	});
 };
 
 exports.addQuestionSaveManualPost = function(req, res) {
 	for (var data in req.body) {
-		Category.find({login_wyk : req.session.userLogin, name: req.body.category, question : {_id : data}},function(err, result) {
-			console.log(result); 
+		console.log('login: ' + req.session.userLogin);
+		console.log('category: ' + req.body.category);
+		console.log('data: ' + data);
+		Category.find({login_wyk : req.session.userLogin, name: req.body.category},function(err, result) {
+			//console.log(result); 
 			/// uzupelnic ///
 		});
 	};

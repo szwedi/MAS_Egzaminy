@@ -4,8 +4,7 @@ block content
 	.site
 		center
 			h3 Active #{name}
-			form(action='/activeTest', method='post')
-				input.input-block-level(type='hidden', name='name', vaule='#{name}')
+			form(action='/activeTest/#{id}', method='post')
 				p View
 					select(name='view')
 						option(value='a') Total score
@@ -15,5 +14,5 @@ block content
 				p Class
 					select(name='class')
 						- for (var i = 0; i < data.length; i++)
-							option(value='#{data[i].name}') #{data[i].name}
+							option(value='#{data[i]._id}') #{data[i].name}
 				input.btn.btn-primary(type='submit', value='Active')
