@@ -27,13 +27,37 @@ exports.activeTestPost = function (req, res) {
 	var idTestUrl = req.params.id;
 	var viewBody = req.body.view;
 	var klasa = req.body.class;
+	var student = [];
 	Class.find({_id : req.body.class}, function(err, result){
 		for (var i=0; i<result[0].student.length; i++) {
-			console.log(result[0].student[i].login);
-			StudentTests.find({login: result[0].student[i].login}, function(err, data){
-				//coś tu napisać - nie dziala
-				console.log('coscoscoscos');
-			});
-		};
+			student.push(result[0].student[i].login);
+		}
 	});
+	var studetTestsFunction = function(){
+		for(var j=0; j<student.length; j++){
+			(function(student){
+				console.log('przed: ' + student);
+				StudentTests.find({login: student}, function(err, data){
+					console.log('id' + data);
+					// if (data._id === undefined) {
+					// 	console.log('nieistnieje');
+					// 	// var studentTest = {
+					// 	// 	idTest : req.params.id,
+					// 	// 	done : false
+					// 	// }
+					// 	// var studentTestInSchema = new StudentTest(studentTest);
+					// 	var studentTests = {
+					// 		login: student
+					// 	};
+					// 	var studentTestsInSchema = new StudentTests(studentTests);
+					// 	studentTestsInSchema.save();
+					// 	console.log('dodano');
+					// } else {
+					// 	console.log('istnieje');
+					// }
+				});
+			})(student[j]);
+		}
+	}
+	setTimeout(studetTestsFunction,3000);
 };

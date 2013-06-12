@@ -23,6 +23,9 @@ var studentTestSchema = new mongoose.Schema({
 	idTest: {
 		type: String
 	},
+	done : {
+		type: Boolean
+	},
 	answer: [answerSchema]
 });
 
