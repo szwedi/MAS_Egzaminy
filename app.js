@@ -81,6 +81,7 @@ app.get('/removeTest/:id',wykladowcaTest.removeTest);
 app.get('/activePanel', wykladowcaActive.activePanel);
 app.get('/activeTest/:id',wykladowcaActive.activeTest);
 app.post('/activeTest/:id',wykladowcaActive.activeTestPost);
+app.get('/deactiveTest/:id',wykladowcaActive.deactiveTest);
 
 
 http.createServer(app).listen(app.get('port'), function(){

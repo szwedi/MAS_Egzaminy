@@ -34,19 +34,19 @@ exports.activeTestPost = function (req, res) {
 				callback(result[0].student[i].login);
 			}
 		});
-	}
+	};
 	findClass(function(student){
 		StudentTests.find({login: student}, function(err, data){
 			if(data.length == 0){
 				var studentTest = {
 					idTest: req.params.id,
 					done: false
-				}
+				};
 				var studentTestInSchema = new StudentTest(studentTest);
 				var studentTests = {
 					login: student,
 					test: studentTestInSchema
-				}
+				};
 				var studentTestsInSchema = new StudentTests(studentTests);
 				studentTestsInSchema.save();
 			}
@@ -54,7 +54,7 @@ exports.activeTestPost = function (req, res) {
 				var studentTest = {
 					idTest: req.params.id,
 					done: false
-				}
+				};
 				var studentTestInSchema = new StudentTest(studentTest);
 				StudentTests.update({login: student},{$push: {test: studentTestInSchema}}, function(err){
 					if (err)
@@ -67,5 +67,13 @@ exports.activeTestPost = function (req, res) {
 		if(err)
 			console.log(err);
 	});
-	res.render('wykladowca/active/activedTest');
+	res.render('wykladowca/active/activatedTest');
+};
+
+exports.deactiveTest = function(req, res){
+	Test.update({_id : req.params.id},{$set: {status : 'inactiv'}}, function(err){
+		if(err)
+			console.log(err);
+	});
+	res.render('wykladowca/active/deactivatedTest');
 };
