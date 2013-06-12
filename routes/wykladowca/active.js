@@ -9,7 +9,7 @@ var Student = require('../../models_mongoose/classModel').Student;
 var Group = require('../../models_mongoose/classModel').Group;
 
 exports.activePanel = function(req, res){
-	Test.find({login_wyk : req.session.userLogin, status: 'prepared'},function(err, result){
+	Test.find({login_wyk : req.session.userLogin, $or: [{status: 'prepared'},{status: 'active'}]},function(err, result){
 		res.render('wykladowca/active/activePanel', {data : result});
 	});
 };
@@ -37,11 +37,35 @@ exports.activeTestPost = function (req, res) {
 	}
 	findClass(function(student){
 		StudentTests.find({login: student}, function(err, data){
-			if(data._id){
-				console.log(data);
-			} else {
-				console.log('nie ma studenta');
+			if(data.length == 0){
+				var studentTest = {
+					idTest: req.params.id,
+					done: false
+				}
+				var studentTestInSchema = new StudentTest(studentTest);
+				var studentTests = {
+					login: student,
+					test: studentTestInSchema
+				}
+				var studentTestsInSchema = new StudentTests(studentTests);
+				studentTestsInSchema.save();
+			}
+			else{
+				var studentTest = {
+					idTest: req.params.id,
+					done: false
+				}
+				var studentTestInSchema = new StudentTest(studentTest);
+				StudentTests.update({login: student},{$push: {test: studentTestInSchema}}, function(err){
+					if (err)
+						console.log(err);
+				});
 			}
 		});
 	});
+	Test.update({_id : req.params.id},{$set: {status : 'active', view : req.body.view}}, function(err){
+		if(err)
+			console.log(err);
+	});
+	res.render('wykladowca/active/activedTest');
 };

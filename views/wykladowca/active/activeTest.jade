@@ -14,5 +14,6 @@ block content
 				p Class
 					select(name='class')
 						- for (var i = 0; i < data.length; i++)
-							option(value='#{data[i]._id}') #{data[i].name}
+							if(data[i].student.length > 0)
+								option(value='#{data[i]._id}') #{data[i].name}
 				input.btn.btn-primary(type='submit', value='Active')

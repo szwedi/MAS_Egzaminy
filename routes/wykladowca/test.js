@@ -65,7 +65,6 @@ exports.createTestManual = function(req, res){
 exports.addQuestionViewManualPost = function(req, res) {
 	Category.find({login_wyk : req.session.userLogin, name: req.body.category},function(err, result) {
 		res.render('wykladowca/test/createTestManualView', {data : result, name : req.body.name, category : req.body.category});
-		//nie przekazuje category do widoku nie wiem czemu
 	});
 };
 

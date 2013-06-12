@@ -12,5 +12,9 @@ block content
 								p #{data[i].name}
 						td 
 							center
-								a(href='/activeTest/#{data[i]._id}')
-									input.btn(type='button', value='Active test')
+								if (data[i].status == 'prepared')
+									a(href='/activeTest/#{data[i]._id}')
+										input.btn.btn-success(type='button', value='Activate test')
+								else
+									a(href='/deactiveTest/#{data[i]._id}')
+										input.btn.btn-danger(type='button', value='Deactivate test')
