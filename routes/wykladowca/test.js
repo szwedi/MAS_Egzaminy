@@ -44,7 +44,7 @@ exports.addQuestionNumberAutomatPost = function(req, res) {
 exports.addQuestionViewAutomatPost = function(req, res) {
 	Category.find({login_wyk : req.session.userLogin, name: req.body.category},function(err, result) {
 		var questionTab = [];
-		for(; questionTab.length<=req.body.number;) {
+		for(; questionTab.length<req.body.number;) {
 			var numb = getRandomInt(0, result[0].question.length);
 			if(!contains(questionTab,numb))
 				questionTab.push(numb);
@@ -71,6 +71,7 @@ exports.addQuestionViewManualPost = function(req, res) {
 
 exports.addQuestionSaveManualPost = function(req, res) {
 	for (var data in req.body) {
+		console.log('test: ' + req.body.test);
 		console.log('login: ' + req.session.userLogin);
 		console.log('category: ' + req.body.category);
 		console.log('data: ' + data);

@@ -28,36 +28,20 @@ exports.activeTestPost = function (req, res) {
 	var viewBody = req.body.view;
 	var klasa = req.body.class;
 	var student = [];
-	Class.find({_id : req.body.class}, function(err, result){
-		for (var i=0; i<result[0].student.length; i++) {
-			student.push(result[0].student[i].login);
-		}
-	});
-	var studetTestsFunction = function(){
-		for(var j=0; j<student.length; j++){
-			(function(student){
-				console.log('przed: ' + student);
-				StudentTests.find({login: student}, function(err, data){
-					console.log('id' + data);
-					// if (data._id === undefined) {
-					// 	console.log('nieistnieje');
-					// 	// var studentTest = {
-					// 	// 	idTest : req.params.id,
-					// 	// 	done : false
-					// 	// }
-					// 	// var studentTestInSchema = new StudentTest(studentTest);
-					// 	var studentTests = {
-					// 		login: student
-					// 	};
-					// 	var studentTestsInSchema = new StudentTests(studentTests);
-					// 	studentTestsInSchema.save();
-					// 	console.log('dodano');
-					// } else {
-					// 	console.log('istnieje');
-					// }
-				});
-			})(student[j]);
-		}
+	var findClass = function(callback){
+		Class.find({_id : req.body.class}, function(err, result){
+			for (var i=0; i<result[0].student.length; i++) {
+				callback(result[0].student[i].login);
+			}
+		});
 	}
-	setTimeout(studetTestsFunction,3000);
+	findClass(function(student){
+		StudentTests.find({login: student}, function(err, data){
+			if(data._id){
+				console.log(data);
+			} else {
+				console.log('nie ma studenta');
+			}
+		});
+	});
 };

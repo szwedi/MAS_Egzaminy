@@ -1,10 +1,22 @@
 var mongoose = require('mongoose');
-
+var Test = require('../models_mongoose/testModel').Test;
+var QuestionTest = require('../models_mongoose/testModel').QuestionTest;
+var Answer = require('../models_mongoose/studentTestModel').Answer;
+var StudentTest = require('../models_mongoose/studentTestModel').StudentTest;
+var StudentTests = require('../models_mongoose/studentTestModel').StudentTests;
 var Class = require('../models_mongoose/classModel').Class;
 var Student = require('../models_mongoose/classModel').Student;
 var Group = require('../models_mongoose/classModel').Group;
 
 mongoose.connect('mongodb://pjwstk:pjwstk311@linus.mongohq.com:10037/eX4AJDngsak3Mk6bLAEsg');
+
+
+var studentTests = {
+login: 's0004'
+};
+var studentTestsInSchema = new StudentTests(studentTests);
+studentTestsInSchema.save();
+console.log('dodano');
 
 // var mystudent1 = {
 // 	name: 'a',
