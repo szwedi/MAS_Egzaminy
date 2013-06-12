@@ -28,9 +28,9 @@ html
 						if(session.typ == 'student')
 							ul.nav
 								li
-									a(href='#') Actual exams
+									a(href='/studentTest') Actual exams
 								li
-									a(href='#') Archival exams
+									a(href='/studentArchivTest') Archival exams
 						if(session.typ == 'wykladowca')
 							ul.nav
 								li
@@ -42,5 +42,5 @@ html
 								li
 									a(href='/activePanel') Activate test
 								li
-									a(href='#') Generate report
+									a(href='/reportPanel') Generate report
 		block content
