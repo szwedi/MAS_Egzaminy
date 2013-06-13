@@ -44,7 +44,7 @@ exports.addQuestionNumberAutomatPost = function(req, res) {
 exports.addQuestionViewAutomatPost = function(req, res) {
 	Category.find({login_wyk : req.session.userLogin, name: req.body.category},function(err, result) {
 		var questionTab = [];
-		for(; questionTab.length<req.body.number;) {
+		for(; questionTab.length<=req.body.number;) {
 			var numb = getRandomInt(0, result[0].question.length);
 			if(!contains(questionTab,numb))
 				questionTab.push(numb);

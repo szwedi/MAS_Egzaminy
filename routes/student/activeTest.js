@@ -8,7 +8,20 @@ var StudentAnswer = require('../../models_mongoose/studentTestModel').Answer;
 
 
 exports.studentTest = function(req, res){
-	StudentTests.find({login : req.session.userLogin},function(err, result){
-
+	var studentTest = [];
+	var getStudentTests = function(callback){
+		StudentTests.find({login : req.session.userLogin},function(err, result){
+			for(var i=0; i<result[0].test.length; i++){
+				callback(result[0].test[i].idTest);
+			}
+		});
+	};
+	getStudentTests(function(idTest){
+		Test.find({_id : idTest},function(err,data){
+			studentTest.push(data[0]);
+		});
 	});
+	setTimeout(function(){
+		res.render('student/active/activeTest', {data : studentTest});
+	},2000);
 };
