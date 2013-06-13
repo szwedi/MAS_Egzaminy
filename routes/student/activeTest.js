@@ -35,5 +35,11 @@ exports.activeTest = function(req,res){
 };
 
 exports.activeTestPost = function(req,res){
-
+	for (var data in req.body) {
+		var idQuestion = data.slice(0,-1);
+		var answer = data.slice(-1);
+		StudentTests.find({login: req.session.userLogin/*, test : {idTest : req.params.id}*/}, function(err, data){
+			console.log(data);
+		});
+	}
 };

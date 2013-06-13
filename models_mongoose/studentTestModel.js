@@ -6,16 +6,20 @@ var answerSchema = new mongoose.Schema({
 		type: String
 	},
 	a: {
-		type: Boolean
+		type: Boolean,
+		default: false
 	},
 	b: {
-		type: Boolean
+		type: Boolean,
+		default: false
 	},
 	c: {
-		type: Boolean
+		type: Boolean,
+		default: false
 	},
 	d: {
-		type: Boolean
+		type: Boolean,
+		default: false
 	}
 });
 
