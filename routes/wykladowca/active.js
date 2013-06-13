@@ -24,9 +24,9 @@ exports.activeTest = function (req, res) {
 };
 
 exports.activeTestPost = function (req, res) {
-	var idTestUrl = req.params.id;
-	var viewBody = req.body.view;
-	var klasa = req.body.class;
+	// var idTestUrl = req.params.id;
+	// var viewBody = req.body.view;
+	// var klasa = req.body.class;
 	var student = [];
 	var findClass = function(callback){
 		Class.find({_id : req.body.class}, function(err, result){

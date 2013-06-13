@@ -87,6 +87,8 @@ app.get('/deactiveTest/:id',wykladowcaActive.deactiveTest);
 
 //------------------STUDENT-----------------------
 app.get('/studentTest',studentActive.studentTest);
+app.get('/studentActiveTest/:id',studentActive.activeTest);
+app.post('/studentActiveTest/:id',studentActive.activeTestPost);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

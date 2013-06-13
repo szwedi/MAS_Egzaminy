@@ -12,7 +12,8 @@ exports.studentTest = function(req, res){
 	var getStudentTests = function(callback){
 		StudentTests.find({login : req.session.userLogin},function(err, result){
 			for(var i=0; i<result[0].test.length; i++){
-				callback(result[0].test[i].idTest);
+				if(result[0].test[i].done == false)
+					callback(result[0].test[i].idTest);
 			}
 		});
 	};
@@ -24,4 +25,15 @@ exports.studentTest = function(req, res){
 	setTimeout(function(){
 		res.render('student/active/activeTest', {data : studentTest});
 	},2000);
+};
+
+exports.activeTest = function(req,res){
+	var idTestUrl = req.params.id;
+	Test.find({_id: req.params.id}, function(err,data){
+		res.render('student/active/test', {data : data});
+	});
+};
+
+exports.activeTestPost = function(req,res){
+
 };

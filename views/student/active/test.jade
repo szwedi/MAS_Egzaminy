@@ -1,0 +1,25 @@
+extends ../../layout
+
+block content
+	.site
+		center
+			h3 TEST
+		form(action='/studentActiveTest/#{data[0]._id}', method='post')
+			- for (var i = 0; i < data[0].question.length; i++)
+				p
+					b #{data[0].question[i].question}
+				p 
+					input(type='checkbox', name='#{data[0].question[i]._id}a', value='a') 
+					spam #{data[0].question[i].a}
+				p 
+					input(type='checkbox', name='#{data[0].question[i]._id}b', value='b') 
+					spam #{data[0].question[i].b}
+				p 
+					input(type='checkbox', name='#{data[0].question[i]._id}c', value='c') 
+					spam #{data[0].question[i].c}
+				p 
+					input(type='checkbox', name='#{data[0].question[i]._id}d', value='d') 
+					spam #{data[0].question[i].d}
+				br
+			center
+				input.btn.btn-primary(type='submit', value='Send test')
