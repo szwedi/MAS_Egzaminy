@@ -20,8 +20,9 @@ exports.studentTest = function(req, res){
 		});
 	};
 	getStudentTests(function(idTest){
-		Test.find({_id : idTest, status : 'active'},function(err,data){
-			studentTest.push(data[0]);
+		Test.find({_id : idTest},function(err,data){
+			if (data[0].status == 'active')
+				studentTest.push(data[0]);
 		});
 	});
 	setTimeout(function(){
