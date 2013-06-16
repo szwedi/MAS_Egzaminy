@@ -1,0 +1,17 @@
+extends ../../layout
+
+block content
+	.site
+		center
+			h3 Archive tests
+			table.table
+				
+				- for (var i = 0; i < data.length; i++)
+					tr
+						td 
+							center
+								p #{data[i].name}
+						td 
+							center
+								a(href='/studentArchiveTest/#{data[i]._id}')
+									input.btn(type='button', value='View')

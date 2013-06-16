@@ -20,7 +20,7 @@ exports.studentTest = function(req, res){
 		});
 	};
 	getStudentTests(function(idTest){
-		Test.find({_id : idTest},function(err,data){
+		Test.find({_id : idTest, status : 'active'},function(err,data){
 			studentTest.push(data[0]);
 		});
 	});
@@ -42,6 +42,7 @@ exports.activeTestPost = function(req,res){
 		var answer = data.slice(-1);
 		StudentTests.find({login: req.session.userLogin}, function(err, data){
 			console.log(data);
+			//tutaj zczytać odpowiedzi z pytań i uaktualnić baze danych
 		});
 	}
 };
