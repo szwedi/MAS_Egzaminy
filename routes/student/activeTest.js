@@ -41,9 +41,20 @@ exports.activeTestPost = function(req,res){
 	for (var data in req.body) {
 		var idQuestion = data.slice(0,-1);
 		var answer = data.slice(-1);
-		StudentTests.find({login: req.session.userLogin}, function(err, data){
+		StudentTests.find({login: req.session.userLogin, 'test.idTest' : idTestUrl, 'test.answer.idQuestion' : idQuestion}, function(err, data){
 			console.log(data);
-			//tutaj zczytać odpowiedzi z pytań i uaktualnić baze danych
+			if(data.length == 0){
+				var studentAnswer = {
+					idQuestion: idQuestion
+				};
+				var studentAnswerInSchema = new StudentTest(studentAnswer);
+				// do poprawy jeszcze nie dodaje pytania jakiś blad w pushu ...
+				StudentTests.update({login: req.session.userLogin, 'test.idTest' : idTestUrl},{$push: {answer: studentAnswerInSchema}}, function(err){
+					if (err)
+						console.log(err);
+				});
+			}
+			//ustawienie odpowiedzi
 		});
 	}
 };

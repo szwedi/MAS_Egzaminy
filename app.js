@@ -85,11 +85,12 @@ app.get('/activeTest/:id',wykladowcaActive.activeTest);
 app.post('/activeTest/:id',wykladowcaActive.activeTestPost);
 app.get('/deactiveTest/:id',wykladowcaActive.deactiveTest);
 
-//------------------STUDENT-----------------------
+//------------------STUDENT ACTIVE-----------------------
 app.get('/studentTest',studentActive.studentTest);
 app.get('/studentActiveTest/:id',studentActive.activeTest);
 app.post('/studentActiveTest/:id',studentActive.activeTestPost);
 
+//------------------STUDENT ARCHIVE-----------------------
 app.get('/studentArchivTest', studentArchive.studentArchiveTest);
 app.get('/studentArchiveTest/:id',studentArchive.studentViewArchiveTest);
 
