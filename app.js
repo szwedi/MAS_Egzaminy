@@ -91,6 +91,7 @@ app.get('/studentActiveTest/:id',studentActive.activeTest);
 app.post('/studentActiveTest/:id',studentActive.activeTestPost);
 
 app.get('/studentArchivTest', studentArchive.studentArchiveTest);
+app.get('/studentArchiveTest/:id',studentArchive.studentViewArchiveTest);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

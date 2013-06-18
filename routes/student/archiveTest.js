@@ -28,3 +28,7 @@ exports.studentArchiveTest = function(req, res){
 		res.render('student/archive/archiveTest', {data : studentTest});
 	},2000);
 };
+
+exports.studentViewArchiveTest = function (req, res) {
+
+};

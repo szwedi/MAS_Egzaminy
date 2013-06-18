@@ -15,6 +15,6 @@ block content
 								if (data[i].status == 'prepared')
 									a(href='/activeTest/#{data[i]._id}')
 										input.btn.btn-success(type='button', value='Activate test')
-								else
+								if (data[i].status == 'active')
 									a(href='/deactiveTest/#{data[i]._id}')
 										input.btn.btn-danger(type='button', value='Deactivate test')
